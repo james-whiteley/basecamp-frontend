@@ -1,0 +1,261 @@
+body {
+  font-family: "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+  background-color: #F6F2EF;
+}
+
+#online-indicator {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  text-shadow: 0 0 2px rgba(0,0,0,0.4);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#online-indicator > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#online-indicator > span {
+  line-height: 2rem;
+}
+
+#online-light {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #555;
+  margin: 0 0 0 10px;
+}
+
+#online-indicator.online {
+  color: #5dc632;
+}
+
+#online-indicator.offline {
+  color: #999;
+}
+
+#online-indicator.online > #online-light {
+  background-color: #6ed743;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+}
+
+#online-indicator.offline > #online-light {
+  background-color: #999;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+}
+
+a#back-btn {
+  color: #212529;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  height: 2rem;
+  position: fixed;
+  left: 15px;
+  top: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a#back-btn i {
+  color: #4AA562;
+}
+
+#details-container {
+  margin-top: 3rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.card-body {
+  padding: 0.85rem;
+}
+
+.card-text {
+  font-size: 0.85rem;
+}
+
+.card-text-fade {
+  position: absolute; 
+  bottom: 2.65rem; 
+  left: 0;
+  width: 100%;
+  height: 40px; 
+  background-image: linear-gradient(to bottom, transparent, rgb(255,255,255));
+}
+
+.card-footer {
+  height: 2.65rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #FFF;
+  border-top: none;
+  padding: 0 0.85rem 0.5rem;
+}
+
+.card-author {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  line-height: 2rem;
+  color: #FFF;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+#project-title,
+#task-title {
+  padding-top: 40px;
+}
+
+#project-author,
+#task-author {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: #58C6A4;
+  text-align: center;
+  line-height: 50px;
+  color: #FFF;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+#project-tasks-container,
+#projects-container {
+  margin-bottom: 60px;
+}
+
+#tasks-line-header,
+#projects-line-header {
+  text-align: center;
+}
+
+#tasks-line-header:before,
+#projects-line-header:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  z-index: -1;
+}
+
+#tasks-line-header h3,
+#projects-line-header h3 {
+  display: inline-block;
+  background: #F6F2EF;
+  font-size: 1.15rem;
+  color: #877457;
+  font-weight: normal;
+  padding: 0 0.5em;
+  margin: 0;
+}
+
+#task-cards .row,
+#project-cards .row {
+  margin-top: 15px;
+}
+
+#task-cards .row .card,
+#project-cards .row .card {
+  box-shadow: 0 0 1px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.1);
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+#task-cards .row .task-link,
+#project-cards .row .project-link {
+  color: #283c46;
+}
+
+#task-cards .row .task-link:hover,
+#project-cards .row .project-link:hover {
+  text-decoration: none;
+}
+
+.edit-btns {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  border-radius: 20px;
+  background: #FFF;
+  font-size: 0.85rem;
+  padding: 0 15px;
+  line-height: 40px;
+  border: 1px solid #DDD;
+  cursor: pointer;
+}
+
+.edit-btns > i {
+  font-size: 1.1rem;
+}
+
+.edit-btns > span {
+  font-family: "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
+  margin: 0 0 0 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#edit-btn {
+  opacity: 0.6;
+}
+
+#edit-btn:hover {
+  opacity: 1;
+}
+
+#edit-btn > i,
+#save-btn > i {
+  color: #4AA562;
+}
+
+#save-btn,
+#cancel-btn {
+  display: none;
+}
+
+#cancel-btn {
+  right: 0;
+  left: auto;
+}
+
+#cancel-btn > i {
+  color: #D71B18;
+}
+
+input#edit-title {
+  display: none;
+  width: 100%;
+  background: none;
+  border: none;
+  margin-top: 40px;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #212529;
+}
+
+input#edit-title:focus {
+  border: none;
+  outline: none;
+}
+
+trix-editor#edit-description-editor {
+  border: none;
+}
