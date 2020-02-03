@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" href="main.css" />
+
+    <title>Basecamp</title>
+  </head>
+  <body>
+    <div class="container">
+  		<div class="row" id="project-cards"></div>
+		</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
+
+		<script>
+			$(document).ready(function() {
+				fetch('http://localhost:8081/api/v1/projects')
+  			.then(response => {
+  			  return response.json();
+  			})
+  			.then(response => {
+  			  for (var key in response) {
+    				if (response.hasOwnProperty(key)) {
+							let col_div = $('<div></div>').addClass('col-sm-6');
+							let card_div = $('<div></div>').addClass('card');
+							let card_body_div = $('<div></div>').addClass('card-body');
+							let card_title = $('<h5></h5>').addClass('card-title').text(response[key].title);
+							let card_text = $('<p></p>').addClass('card-text').text(response[key].author);
+							let card_button = $('<a></a>').addClass('btn btn-primary').text('View Tasks');
+
+							card_text.append(card_button);
+							card_body_div.append(card_title);
+							card_body_div.append(card_text);
+							card_div.append(card_body_div);
+							col_div.append(card_div);
+							$("#project-cards").append(col_div);
+    				}
+					}
+  			})
+				.catch(error => {
+					console.log(error);
+				});
+			});
+		</script>
+  </body>
+</html>
